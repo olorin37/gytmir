@@ -1,3 +1,4 @@
 fn main() {
-    println!("Hello, world!");
+    eprintln!("No implementation yet!");
+    std::process::exit(1);
 }

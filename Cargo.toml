@@ -1,0 +1,12 @@
+[package]
+name = "gytmir"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+git2 = "0.19.0"
+toml = "0.8.19"
+serde = "1.0.216"
+serde_derive = "1.0.216"
+clap = "4.5.23"
+#auth-git2 = "0.5.5"

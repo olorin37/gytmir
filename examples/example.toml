@@ -1,0 +1,23 @@
+discard_changes_when_conflict = "mirror"
+interval = 10
+
+[[remote_prefix]]
+name = "mirror"
+url_prefix = "ssh://gerrit.my:29418/a/common/repositories/prefix/"
+
+[[remote_prefix]]
+name = "master"
+url_prefix = "git@gitlab.my:my_group/"
+
+
+[[repository]]
+name = "docs"
+
+[[repository]]
+name = "ci_scripts"
+
+[[repository]]
+name = "central_config"
+
+[[repository]]
+name = "jobdsl_config"

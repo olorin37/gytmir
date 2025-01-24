@@ -57,28 +57,37 @@ fn credentials_in_push_options(key_file: &str) -> PushOptions {
     push_options
 }
 
-fn main() {
-    let cli = Cli::parse();
-    eprintln!("{:?}", cli);
-
-    let repo = Repository::open(cli.repo_dir).unwrap();
+fn sync(
+    repo_dir: &str,
+    remote: &str,
+    key_file: &str,
+    branch: &str,
+) {
+    let repo = Repository::open(repo_dir).unwrap();
     println!("{:?}", repo.head().unwrap().name().unwrap());
     for remote in repo.remotes().unwrap().iter() {
         println!("{:?}", remote);
     }
-    let mut remote = repo.find_remote(&cli.remote).unwrap();
+    let mut remote = repo.find_remote(&remote).unwrap();
     for refspec in remote.fetch_refspecs().unwrap().iter() {
         println!("{:?}", refspec);
     }
 
-    let mut fetch_options = credentials_in_fetch_options(&cli.key_file);
+    let mut fetch_options = credentials_in_fetch_options(&key_file);
 
-    let () = remote.fetch(&[&cli.branch], Some(&mut fetch_options), None).unwrap();
+    let () = remote.fetch(&[&branch], Some(&mut fetch_options), None).unwrap();
 
     let mut mirror_remote = repo.remote("mirror", "git@gitlab.com:olorin37/doxtractor.git").unwrap();
 
-    let mut push_options = credentials_in_push_options(&cli.key_file);
+    let mut push_options = credentials_in_push_options(&key_file);
     let _ = mirror_remote.push(&["refs/remotes/origin/master"], Some(&mut push_options)).unwrap();
 
     println!("Mirror remote: {:?}", mirror_remote.url().unwrap());
+}
+
+fn main() {
+    let cli = Cli::parse();
+    eprintln!("{:?}", cli);
+
+    sync(&cli.repo_dir, &cli.remote, &cli.key_file, &cli.branch);
 }

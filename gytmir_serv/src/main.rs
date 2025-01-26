@@ -1,5 +1,5 @@
 use actix_web::{get, web, App, HttpServer, HttpResponse, Responder};
-use gytmir_internal::sync;
+use gytmir_lib::sync;
 use std::thread;
 
 #[get("/")]

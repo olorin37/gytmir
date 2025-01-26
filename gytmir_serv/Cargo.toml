@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 actix-web = "4.8.0"
-gytmir_internal = { path = "../gytmir_internal" }
+gytmir_lib = { path = "../gytmir_lib" }

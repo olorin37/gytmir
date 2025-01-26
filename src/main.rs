@@ -1,5 +1,5 @@
 use clap::Parser;
-use gytmir_internal::sync;
+use gytmir_lib::sync;
 
 #[derive(Parser, Debug)]
 #[command(

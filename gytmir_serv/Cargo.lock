@@ -571,7 +571,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gytmir_internal"
+name = "gytmir_lib"
 version = "0.1.0"
 dependencies = [
  "auth-git2",
@@ -586,7 +586,7 @@ name = "gytmir_serv"
 version = "0.1.0"
 dependencies = [
  "actix-web",
- "gytmir_internal",
+ "gytmir_lib",
 ]
 
 [[package]]

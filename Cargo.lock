@@ -209,11 +209,11 @@ name = "gytmir"
 version = "0.1.0"
 dependencies = [
  "clap",
- "gytmir_internal",
+ "gytmir_lib",
 ]
 
 [[package]]
-name = "gytmir_internal"
+name = "gytmir_lib"
 version = "0.1.0"
 dependencies = [
  "auth-git2",

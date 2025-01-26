@@ -52,7 +52,10 @@ pub fn sync(
 
     let () = remote.fetch(&[&branch], Some(&mut fetch_options), None).unwrap();
 
-    let mut mirror_remote = repo.remote("mirror", "git@gitlab.com:olorin37/doxtractor.git").unwrap();
+    let mut mirror_remote = match repo.find_remote("mirror") {
+        Ok(remote) => remote,
+        Err(_) => repo.remote("mirror", "git@gitlab.com:olorin37/doxtractor.git").unwrap(),
+    };
 
     let mut push_options = credentials_in_push_options(&key_file);
     let _ = mirror_remote.push(&["refs/remotes/origin/master"], Some(&mut push_options)).unwrap();

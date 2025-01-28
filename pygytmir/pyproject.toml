@@ -1,0 +1,21 @@
+[build-system]
+requires = ["maturin>=1.8,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "pygytmir"
+description = "Synchronize git repositories with gytmir"
+readme = "README.md"
+authors = [
+    { name = "Jakub A. Gramsz", email = "jakub.gramsz@gmail.com" }
+]
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
+dynamic = ["version"]
+
+[tool.maturin]
+features = ["pyo3/extension-module"]
